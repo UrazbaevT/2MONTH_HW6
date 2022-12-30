@@ -8,23 +8,25 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import com.example.hw61.databinding.FragmentSongsBinding
 
-class SognsFragment : Fragment() {
+class SongsFragment : Fragment() {
 
     private lateinit var binding: FragmentSongsBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         binding = FragmentSongsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val adapter = SongsAdapter(uploadSongs(), this::onItemClick)
-        binding.rvSongs.adapter = adapter
+        binding.recyclerView.adapter = adapter
         super.onViewCreated(view, savedInstanceState)
     }
 
     private fun uploadSongs() = listOf(
-        Song("1", "DNCE", "Cake By the Ocean","3:45"),
+        Song("1", "DNCE", "Cake By the Ocean", "3:45"),
         Song("2", "French Montana ft. Swae Lee", "Unforgettable", "3:51"),
         Song("3", "The Weeknd, Kendrick Lamar", "Pray for Me", "3:29"),
         Song("4", "Doja Cat, The Weeknd", "You Right", "3:05"),
@@ -37,12 +39,13 @@ class SognsFragment : Fragment() {
     )
 
     private fun onItemClick(title: String) {
-        requireActivity().supportFragmentManager.findFragmentById(R.id.album_fragment)?.view?.isGone = true
+        requireActivity().supportFragmentManager.findFragmentById(R.id.image_fragment)?.view?.isGone =
+            true
         val bundle = Bundle()
         bundle.putString("Name", title)
-        val singleSongFragment = SongFragment()
-        singleSongFragment.arguments = bundle
+        val songFragment = SongFragment()
+        songFragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.songs_fragment, singleSongFragment).commit()
+            .replace(R.id.songs_fragment, songFragment).commit()
     }
 }

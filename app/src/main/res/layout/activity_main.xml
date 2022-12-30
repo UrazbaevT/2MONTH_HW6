@@ -8,7 +8,7 @@
     tools:context="com.example.hw61.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/album_fragment"
+        android:id="@+id/image_fragment"
         android:name="com.example.hw61.ImageFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +16,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/songs_fragment"
-        android:name="com.example.hw61.SognsFragment"
+        android:name="com.example.hw61.SongsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
