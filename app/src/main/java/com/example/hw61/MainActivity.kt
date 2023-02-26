@@ -8,5 +8,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportFragmentManager.beginTransaction().add(R.id.image_fragment, ImageFragment()).commit()
+
+        supportFragmentManager.beginTransaction().add(R.id.songs_fragment, SongsFragment()).commit()
     }
 }

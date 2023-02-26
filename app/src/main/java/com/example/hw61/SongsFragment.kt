@@ -11,6 +11,7 @@ import com.example.hw61.databinding.FragmentSongsBinding
 class SongsFragment : Fragment() {
 
     private lateinit var binding: FragmentSongsBinding
+    private lateinit var adapter: SongsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -19,10 +20,12 @@ class SongsFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val adapter = SongsAdapter(uploadSongs(), this::onItemClick)
+        super.onViewStateRestored(savedInstanceState)
+
+        adapter = SongsAdapter(uploadSongs(), this::onItemClick)
         binding.recyclerView.adapter = adapter
-        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun uploadSongs() = listOf(
@@ -39,12 +42,14 @@ class SongsFragment : Fragment() {
     )
 
     private fun onItemClick(title: String) {
-        requireActivity().supportFragmentManager.findFragmentById(R.id.image_fragment)?.view?.isGone =
-            true
+        requireActivity().supportFragmentManager.findFragmentById(R.id.image_fragment)?.view?.isGone = true
+
         val bundle = Bundle()
         bundle.putString("Name", title)
+
         val songFragment = SongFragment()
         songFragment.arguments = bundle
+
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.songs_fragment, songFragment).commit()
     }

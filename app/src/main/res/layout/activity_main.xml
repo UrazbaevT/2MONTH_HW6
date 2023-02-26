@@ -7,7 +7,7 @@
     android:background="@color/white"
     tools:context="com.example.hw61.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <FrameLayout
         android:id="@+id/image_fragment"
         android:name="com.example.hw61.ImageFragment"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:background="#2C2C5A"
         android:layout_weight="1" />
 
-    <androidx.fragment.app.FragmentContainerView
+    <FrameLayout
         android:id="@+id/songs_fragment"
         android:name="com.example.hw61.SongsFragment"
         android:layout_width="match_parent"
